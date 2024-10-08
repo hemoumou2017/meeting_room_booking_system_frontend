@@ -2,7 +2,7 @@
  * @Author: error: error: git config user.name & please set dead value or install git && error: git config user.email & please set dead value or install git & please set dead value or install git
  * @Date: 2024-10-08 15:24:22
  * @LastEditors: error: error: git config user.name & please set dead value or install git && error: git config user.email & please set dead value or install git & please set dead value or install git
- * @LastEditTime: 2024-10-08 16:16:38
+ * @LastEditTime: 2024-10-08 16:45:15
  * @FilePath: /meeting_room_booking_system_frontend/src/pages/update_info/UpdateInfo.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -13,6 +13,7 @@ import './update_info.css';
 import { useNavigate } from 'react-router-dom';
 import { getUserInfo, updateInfo, updateUserInfoCaptcha } from '../../interface/interfaces';
 import { constants } from 'buffer';
+import { HeadPicUpload } from './HeadPicUpload';
 
 export interface UserInfo {
     headPic: string;
@@ -83,7 +84,7 @@ export function UpdateInfo() {
                     { required: true, message: '请输入头像!' },
                 ]}
             >
-                <Input/>
+                <HeadPicUpload></HeadPicUpload>
             </Form.Item>
 
             <Form.Item
