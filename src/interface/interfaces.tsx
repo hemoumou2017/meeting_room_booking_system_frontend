@@ -2,7 +2,7 @@
  * @Author: error: error: git config user.name & please set dead value or install git && error: git config user.email & please set dead value or install git & please set dead value or install git
  * @Date: 2024-10-08 10:46:25
  * @LastEditors: error: error: git config user.name & please set dead value or install git && error: git config user.email & please set dead value or install git & please set dead value or install git
- * @LastEditTime: 2024-10-08 16:16:10
+ * @LastEditTime: 2024-10-10 15:21:22
  * @FilePath: /meeting_room_booking_system_frontend/src/interface/interfaces.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -135,4 +135,14 @@ export async function updateUserInfoCaptcha() {
 }
 
 
-export {}
+export async function searchMeetingRoomList(name: string, capacity: number, equipment: string, pageNo: number, pageSize: number) {
+    return await axiosInstance.get('/meeting-room/list', {
+        params: {
+            name,
+            capacity,
+            equipment,
+            pageNo,
+            pageSize
+        }
+    });
+}
