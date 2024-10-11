@@ -2,7 +2,7 @@
  * @Author: error: error: git config user.name & please set dead value or install git && error: git config user.email & please set dead value or install git & please set dead value or install git
  * @Date: 2024-10-10 15:19:26
  * @LastEditors: error: error: git config user.name & please set dead value or install git && error: git config user.email & please set dead value or install git & please set dead value or install git
- * @LastEditTime: 2024-10-10 15:28:05
+ * @LastEditTime: 2024-10-11 10:08:57
  * @FilePath: /meeting_room_booking_system_frontend/src/pages/meeting_room_list/MeetingRoomList.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -12,13 +12,14 @@ import { searchMeetingRoomList } from "../../interface/interfaces";
 import { ColumnsType } from "antd/es/table";
 import { useForm } from "antd/es/form/Form";
 import './meeting_room_list.css';
+import { CreateBookingModal } from "./CreateBookingModal";
 interface SearchMeetingRoom {
     name: string,
     capacity: number,
     equipment: string
 }
-
-interface MeetingRoomSearchResult {
+ 
+export interface MeetingRoomSearchResult {
     id: number,
     name: string,
     capacity: number,
@@ -35,7 +36,9 @@ export function MeetingRoomList() {
     const [pageSize, setPageSize] = useState<number>(10);
     const [num,setNum] = useState<number>();
     const [meetingRoomResult, setMeetingRoomResult] = useState<Array<MeetingRoomSearchResult>>([]);
-
+    const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
+    const [currentMeetingRoom, setCurrentMeetingRoom] = useState<MeetingRoomSearchResult | null>(null);
+    
     const columns: ColumnsType<MeetingRoomSearchResult> = useMemo(() => [
         {
             title: '名称',
@@ -76,7 +79,10 @@ export function MeetingRoomList() {
             title: '操作',
             render: (_, record) => (
                 <div>
-                    <a href="#">预定</a>
+                    <a href="#" onClick={() => {
+                        setIsCreateModalOpen(true)
+                        setCurrentMeetingRoom(record)
+                    }}>预定</a>
                 </div>
                 
             )
@@ -144,7 +150,11 @@ export function MeetingRoomList() {
             onChange: changePage
         }}/>
     </div>
-    
+    {
+        currentMeetingRoom ? <CreateBookingModal isOpen={isCreateModalOpen} handleClose={() => {
+            setIsCreateModalOpen(false)
+        }} meetingRoom={currentMeetingRoom} /> : null
+    }
 
 </div>
 }
