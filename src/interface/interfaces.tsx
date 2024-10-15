@@ -2,7 +2,7 @@
  * @Author: error: error: git config user.name & please set dead value or install git && error: git config user.email & please set dead value or install git & please set dead value or install git
  * @Date: 2024-10-08 10:46:25
  * @LastEditors: error: error: git config user.name & please set dead value or install git && error: git config user.email & please set dead value or install git & please set dead value or install git
- * @LastEditTime: 2024-10-11 10:11:55
+ * @LastEditTime: 2024-10-15 16:19:56
  * @FilePath: /meeting_room_booking_system_frontend/src/interface/interfaces.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -17,7 +17,7 @@ import dayjs from 'dayjs'
 import { CreateBooking } from '../pages/meeting_room_list/CreateBookingModal'
 
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:3001',
+  baseURL: 'http://localhost:3005',
   timeout: 3000
 })
 
@@ -200,4 +200,8 @@ export async function createBooking(booking: CreateBooking) {
         endTime,
         note: booking.note
     })
+}
+
+export async function presignedUrl(fileName: string) {
+    return axiosInstance.get(`/minio/presignedUrl?name=${fileName}`);
 }
