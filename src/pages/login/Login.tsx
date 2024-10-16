@@ -1,8 +1,8 @@
 /*
  * @Author: error: error: git config user.name & please set dead value or install git && error: git config user.email & please set dead value or install git & please set dead value or install git
  * @Date: 2024-10-08 10:46:37
- * @LastEditors: error: error: git config user.name & please set dead value or install git && error: git config user.email & please set dead value or install git & please set dead value or install git
- * @LastEditTime: 2024-10-08 15:57:40
+ * @LastEditors: 何欣 1254409474@qq.com
+ * @LastEditTime: 2024-10-16 10:39:20
  * @FilePath: /meeting_room_booking_system_frontend/src/pages/Login/Login.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -69,6 +69,15 @@ export function Login() {
                     <div className='links'>
                         <Link to='/register'>创建账号</Link>
                         <Link to='/update_password'>忘记密码</Link>
+                    </div>
+                </Form.Item>
+                <Form.Item
+                    {...layout2}
+                >
+                    <div>
+                        <a href="#" onClick={() => {
+                            window.location.href = "http://localhost:3005/user/google"
+                        }}>Google 账号登录</a>
                     </div>
                 </Form.Item>
 
